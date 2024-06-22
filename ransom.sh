@@ -28,6 +28,7 @@ source venv/bin/activate
 # Install required Python packages
 pip install --upgrade pip setuptools wheel
 pip install cryptography
+pip install psutil
 
 # Ensure the main.py script is executable
 chmod +x main.py
