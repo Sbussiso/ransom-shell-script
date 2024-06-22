@@ -11,6 +11,16 @@ check_root() {
 
 check_root
 
+# Update the package list and install required packages
+apt update
+apt install -y git python3 python3-venv python3-pip
+
+# Clone the GitHub repository
+if [ ! -d "anti-ransomware-test" ]; then
+    git clone https://github.com/Sbussiso/anti-ransomware-test.git
+fi
+cd anti-ransomware-test
+
 # Create and activate a virtual environment
 python3 -m venv venv
 source venv/bin/activate
@@ -23,4 +33,4 @@ pip install cryptography
 chmod +x main.py
 
 # Run the main.py script
-python main.py
+python3 main.py
