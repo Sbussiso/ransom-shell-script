@@ -17,10 +17,16 @@ if command -v apt > /dev/null; then
     apt install -y git python3 python3-venv python3-pip
 elif command -v yum > /dev/null; then
     yum update -y
-    yum install -y git python3 python3-venv python3-pip
+    yum install -y git python3 python3-pip
+    python3 -m ensurepip
+    python3 -m pip install --upgrade pip
+    python3 -m pip install virtualenv
 elif command -v dnf > /dev/null; then
     dnf update -y
-    dnf install -y git python3 python3-venv python3-pip
+    dnf install -y git python3 python3-pip
+    python3 -m ensurepip
+    python3 -m pip install --upgrade pip
+    python3 -m pip install virtualenv
 else
     echo "Unsupported package manager. Please install git, python3, python3-venv, and python3-pip manually."
     exit 1
@@ -46,3 +52,4 @@ chmod +x main.py
 
 # Run the main.py script
 python3 main.py
+
