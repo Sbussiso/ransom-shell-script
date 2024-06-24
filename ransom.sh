@@ -13,6 +13,7 @@ check_root
 
 # Update the package list and install required packages
 apt update
+sudo apt install git
 apt install -y git python3 python3-venv python3-pip
 
 # Clone the GitHub repository
