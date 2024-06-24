@@ -32,6 +32,21 @@ Install-Chocolatey
 Install-PackageIfNotInstalled -PackageName "git"
 Install-PackageIfNotInstalled -PackageName "python"
 
+# Reload the environment variables to make newly installed commands available
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
+
+# Verify Git installation
+if (-Not (Get-Command git -ErrorAction SilentlyContinue)) {
+    Write-Error "Git installation failed. Please check the installation and try again."
+    Exit 1
+}
+
+# Verify Python installation
+if (-Not (Get-Command python -ErrorAction SilentlyContinue)) {
+    Write-Error "Python installation failed. Please check the installation and try again."
+    Exit 1
+}
+
 # Clone the GitHub repository
 if (-Not (Test-Path "anti-ransomware-test")) {
     git clone https://github.com/Sbussiso/anti-ransomware-test.git
