@@ -11,10 +11,20 @@ check_root() {
 
 check_root
 
-# Update the package list and install required packages
-apt update
-sudo apt install git
-apt install -y git python3 python3-venv python3-pip
+# Detect the package manager and install required packages
+if command -v apt > /dev/null; then
+    apt update
+    apt install -y git python3 python3-venv python3-pip
+elif command -v yum > /dev/null; then
+    yum update -y
+    yum install -y git python3 python3-venv python3-pip
+elif command -v dnf > /dev/null; then
+    dnf update -y
+    dnf install -y git python3 python3-venv python3-pip
+else
+    echo "Unsupported package manager. Please install git, python3, python3-venv, and python3-pip manually."
+    exit 1
+fi
 
 # Clone the GitHub repository
 if [ ! -d "anti-ransomware-test" ]; then
