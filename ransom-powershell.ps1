@@ -45,7 +45,6 @@ if (-Not (Get-Command git -ErrorAction SilentlyContinue)) {
 if (-Not (Get-Command python -ErrorAction SilentlyContinue)) {
     Write-Error "Python installation failed. Please check the installation and try again."
     Exit 1
-}
 
 # Clone the GitHub repository
 if (-Not (Test-Path "anti-ransomware-test")) {
@@ -55,7 +54,7 @@ Set-Location anti-ransomware-test
 
 # Create and activate a virtual environment
 python -m venv venv
-venv\Scripts\Activate
+.\venv\Scripts\Activate
 
 # Install required Python packages
 .\venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
