@@ -58,12 +58,11 @@ python -m venv venv
 venv\Scripts\Activate
 
 # Install required Python packages
-pip install --upgrade pip setuptools wheel
-pip install cryptography
-pip install psutil
+.\venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
+.\venv\Scripts\python.exe -m pip install cryptography psutil
 
 # Ensure the main.py script is executable
 # (On Windows, we typically don't need to set execute permissions)
 
 # Run the main.py script
-python main.py
+.\venv\Scripts\python.exe main.py
